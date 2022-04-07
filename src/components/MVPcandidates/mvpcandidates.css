@@ -1,0 +1,47 @@
+.mvpcandidates {
+    width: 100%;
+    -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+}
+
+.mvpcandidatesTitle {
+    font-size: 22px;
+    font-weight: 600;
+    padding-top: 20px;
+    padding-left: 20px;
+}
+
+.mvpcandidatesTable {
+    width: 100%;
+    border-spacing: 40px;
+}
+
+.mvpcandidatesTh {
+    text-align: left;
+    cursor: pointer;
+}
+
+
+.mvpcandidatesTd {
+    font-weight: 300;
+}
+
+.mvpcandidatesTr {
+    cursor: pointer;
+}
+
+
+.mvpcandidatesTdName {
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+}
+
+.playerImg {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+    border: 1px rgba(0, 0, 0, 0.75) solid;
+}

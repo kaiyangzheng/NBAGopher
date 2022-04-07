@@ -1,3 +1,13 @@
 .playerlist {
     flex: 4;
 }
+
+.mvpCandidates {
+    display: flex;
+    margin: 20px;
+}
+
+.playerSearch {
+    display: flex;
+    margin: 20px;
+}
