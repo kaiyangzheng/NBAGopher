@@ -54,10 +54,12 @@ export default function SideBar() {
                             <AssessmentOutlined className="sidebarIcon" />
                             Analytics
                         </li>
-                        <li className="sidebarListItem">
-                            <TrendingUpOutlined className="sidebarIcon" />
-                            Trends
-                        </li>
+                        <Link to="/trends" style={{ textDecoration: 'none' }}>
+                            <li className={active == "/trends" ? "sidebarListItem active" : "sidebarListItem"}>
+                                <TrendingUpOutlined className="sidebarIcon" />
+                                Trends
+                            </li>
+                        </Link>
                     </ul>
                 </div>
                 <div className="sidebarMenu">

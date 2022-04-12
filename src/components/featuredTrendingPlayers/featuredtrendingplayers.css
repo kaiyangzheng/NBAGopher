@@ -1,0 +1,80 @@
+.featuredTrending {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.featuredTrendingItem {
+    flex: 1;
+    margin: 0px 20px;
+    padding: 30px;
+    border-radius: 10px;
+    cursor: pointer;
+    -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+}
+
+.featuredTrendingTitleContainer {
+    display: flex;
+    align-items: center;
+}
+
+.featuredTrendingTitleImg {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px rgba(0, 0, 0, 0.75) solid;
+}
+
+.featuredTrendingTitleText {
+    font-size: 25px;
+    margin-left: 10px;
+}
+
+.featuredTrendingStatsContainer {
+    margin: 10px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.featuredTrendingStat {
+    font-size: 30px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.featuredTrendingStatName {
+    font-size: 15px;
+    font-weight: normal;
+    color: black;
+}
+
+.featuredTrendingSub {
+    font-size: 15px;
+    font-weight: normal;
+    color: grey;
+}
+
+.statTrendNum {
+    font-size: 18px;
+    margin-top: 0px;
+    font-weight: normal;
+}
+
+.increase {
+    color: green;
+}
+
+.decrease {
+    color: red;
+}
+
+.showMore {
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

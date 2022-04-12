@@ -1,0 +1,74 @@
+.improvingPlayers {
+    flex: 1;
+    -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+    padding: 20px;
+    margin: 20px;
+}
+
+.improvingPlayersTitle {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.improvingPlayersTable {
+    width: 100%;
+    border-spacing: 20px;
+}
+
+.improvingPlayersTh {
+    text-align: left;
+}
+
+.improvingPlayerName {
+    font-weight: normal;
+    text-align: left;
+}
+
+.improvingPlayer {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+}
+
+.improvingPlayerImg {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 5px;
+    border: 1px rgba(0, 0, 0, 0.75) solid;
+}
+
+.diff {
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+}
+
+.statContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.arrowIcon {
+    font-size: 15px;
+}
+
+.increase {
+    color: #00b300;
+}
+
+.decrease {
+    color: #ff0000;
+}
+
+.subtitleContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.subtitle {
+    font-size: 15px;
+    color: grey;
+}
