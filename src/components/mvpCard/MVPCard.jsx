@@ -132,15 +132,16 @@ export default function MVPCard() {
                 </div>
             </div>
             <div className="MVPChart">
-                <h3>{PredictedMVP?.Name} vs. Average Top 30 PPG</h3>
+                <h3>{PredictedMVP?.Name} vs. 75th Percentile</h3>
                 <ResponsiveContainer width="100%" aspect={4 / 1}>
-                    <BarChart data={chartData} >
+                    <BarChart data={chartData} margin={{ left: -35 }}>
                         <XAxis dataKey="name" />
+                        <YAxis domain={[0, 20]} />
                         <CartesianGrid strokeDasharray="3 3" />
                         <Tooltip />
                         <Legend />
                         <Bar dataKey="mvp" fill="#8884d8" name={PredictedMVP?.Name} />
-                        <Bar dataKey="average" fill="#82ca9d" name="Average Top 30 PPG" />
+                        <Bar dataKey="average" fill="#82ca9d" name="75th Percentile" />
                     </BarChart>
                 </ResponsiveContainer>
             </div>
