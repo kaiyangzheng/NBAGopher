@@ -7,13 +7,14 @@ import PlayerSearch from '../../components/playerSearch/PlayerSearch'
 export default function PlayerList() {
     return (
         <div className="playerlist">
+            <div className="playerSearch">
+                <PlayerSearch />
+            </div>
             <FeaturedPlayers />
             <div className="mvpCandidates">
                 <MVPCandidates />
             </div>
-            <div className="playerSearch">
-                <PlayerSearch />
-            </div>
+
         </div>
     )
 }

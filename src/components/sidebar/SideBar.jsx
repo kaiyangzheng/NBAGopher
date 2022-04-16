@@ -50,14 +50,16 @@ export default function SideBar() {
                                 Players
                             </li>
                         </Link>
-                        <li className="sidebarListItem">
-                            <AssessmentOutlined className="sidebarIcon" />
-                            Analytics
-                        </li>
                         <Link to="/trends" style={{ textDecoration: 'none' }}>
                             <li className={active == "/trends" ? "sidebarListItem active" : "sidebarListItem"}>
                                 <TrendingUpOutlined className="sidebarIcon" />
                                 Trends
+                            </li>
+                        </Link>
+                        <Link to="/playerpredictions" style={{ textDecoration: 'none' }}>
+                            <li className="sidebarListItem">
+                                <RemoveRedEyeOutlined className="sidebarIcon" />
+                                Predictions
                             </li>
                         </Link>
                     </ul>

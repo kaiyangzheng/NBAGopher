@@ -20,7 +20,7 @@ export default function PlayerSearch() {
         const response = await fetch(`https://data.nba.net/data/10s/prod/v1/${season}/players.json`, requestOptions)
         const players = await response.json();
         let filter = players.league.standard.filter(player => (player.firstName.toLowerCase() + ' ' + player.lastName.toLowerCase()).includes(searchValue.toLowerCase()))
-        setFilteredPlayers(filter);
+        setFilteredPlayers(filter.slice(0, 5));
     }
     return (
         <div className="playerSearchWrapper">

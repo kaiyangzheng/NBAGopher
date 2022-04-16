@@ -1,10 +1,5 @@
-.playerlist {
+.playerPredictions {
     flex: 4;
-}
-
-.mvpCandidates {
-    display: flex;
-    margin: 20px;
 }
 
 .playerSearch {

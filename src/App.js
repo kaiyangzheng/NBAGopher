@@ -8,6 +8,7 @@ import TopBar from './components/topbar/TopBar'
 import SideBar from './components/sidebar/SideBar'
 import PlayerList from './pages/playerlist/PlayerList'
 import Trends from './pages/trends/Trends'
+import PlayerPredictions from './pages/playerPredictions/PlayerPredictions'
 
 import './app.css';
 
@@ -22,6 +23,9 @@ function App() {
         </Routes>
         <Routes>
           <Route path="/trends" element={<Trends />} />
+        </Routes>
+        <Routes>
+          <Route path="/playerpredictions" element={<PlayerPredictions />} />
         </Routes>
       </div>
     </Router>
