@@ -3,7 +3,7 @@ import { DataGrid } from '@material-ui/data-grid'
 import { FontAwesomeIcon } from '@fortawesome/fontawesome-free'
 import './mvpcandidates.css'
 
-export default function MVPCandidates() {
+export default function MVPCandidates({ setComponentsLoading, componentsLoading }) {
     const [mvpCandidates, setMvpCandidates] = useState([])
     const [mvpCandidatesData, setMvpCandidatesData] = useState({})
     const [retrieveData, setRetrieveData] = useState(true)
@@ -82,6 +82,7 @@ export default function MVPCandidates() {
             return second['BPM'] - first['BPM'];
         })
         setTableData(dataList.splice(0, 3))
+        setComponentsLoading({ ...componentsLoading, "MVPCandidates": false })
     }, [mvpCandidatesData])
 
     const handleSort = (property) => {

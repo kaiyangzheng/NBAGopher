@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './featuredplayers.css'
 
-export default function FeaturedPlayers() {
+export default function FeaturedPlayers({ setComponentsLoading, componentsLoading }) {
 
     const [featuredPlayers, setFeaturedPlayers] = useState({ "scorer": "", "passer": "", "defender": "" })
     const [featuredScorerData, setFeaturedScorerData] = useState({})
@@ -39,6 +39,7 @@ export default function FeaturedPlayers() {
         const defenderResponse = await fetch(`https://nbagopher-api.herokuapp.com/player/compiled/${featuredPlayers["featured_defender_id"]}`, requestOptions)
         const defenderData = await defenderResponse.json()
         setFeaturedDefenderData(defenderData)
+        setComponentsLoading({ ...componentsLoading, "FeaturedPlayers": false })
     }
 
     useEffect(() => {

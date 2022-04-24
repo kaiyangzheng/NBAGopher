@@ -52,12 +52,12 @@ export default function FutureStatsSearch() {
     return (
         <>
             <div className="playerSearchWrapper">
-                <div className="searchbar">
+                <div className="futureStatsSearchbar">
                     <TextField id="standard-basic" label="Search Future Performance Predictions..." variant="standard" style={{ width: "100%" }} autoComplete="off" value={searchValue} onChange={(e) => { setSearchValue(e.target.value); handleSearchPlayers() }} />
                 </div>
                 <div className="searchResults">
                     {filteredPlayer && searchValue.trim().length != 0 && < ul className="searchList">
-                        <li className="searchListItem fadeInDown">
+                        <li className="futureStatsSearchListItem  fadeInDown">
                             <div className="title">
                                 <img src={`https://cdn.nba.com/headshots/nba/latest/1040x760/${filteredPlayer?.personId}.png`} alt="" className="titleImg" />
                                 <span className="searchName">{filteredPlayer?.firstName + ' ' + filteredPlayer?.lastName}</span>

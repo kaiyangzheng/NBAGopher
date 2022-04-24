@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './playersearch.css'
 import TextField from '@material-ui/core/TextField';
 
-export default function PlayerSearch() {
+export default function PlayerSearch({ setComponentsLoading, componentsLoading }) {
     const season = 2021;
     const [searchValue, setSearchValue] = useState('');
     const [filteredPlayers, setFilteredPlayers] = useState([]);
@@ -22,6 +22,7 @@ export default function PlayerSearch() {
         let filter = players.league.standard.filter(player => (player.firstName.toLowerCase() + ' ' + player.lastName.toLowerCase()).includes(searchValue.toLowerCase()))
         setFilteredPlayers(filter.slice(0, 5));
     }
+
     return (
         <div className="playerSearchWrapper">
             <div className="searchbar">
