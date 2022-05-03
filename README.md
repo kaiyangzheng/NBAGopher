@@ -1,4 +1,4 @@
-Live Website: http://nbagopher.com/players
+Live Website: http://nbagopher.com/
 
 # Getting Started with Create React App
 
