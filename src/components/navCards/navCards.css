@@ -1,0 +1,67 @@
+.navCards {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.navCardItem {
+    flex: 1;
+    margin: 0px 20px;
+    padding: 30px;
+    cursor: pointer;
+    -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+}
+
+.navCardImg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.img {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    float: left;
+}
+
+.navCardTitle {
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+    font-weight: bold;
+    color: black;
+    margin-top: 10px;
+}
+
+.arrowContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5px;
+}
+
+.linksList {
+    list-style: none;
+    padding: 5px;
+}
+
+.linksListItem {
+    padding: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    color: black;
+}
+
+.linksListItem:hover {
+    background-color: rgb(240, 240, 255);
+}
+
+.linksListIcon {
+    margin-right: 5px;
+    font-size: 20px !important;
+}

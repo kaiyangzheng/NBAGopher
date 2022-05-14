@@ -11,7 +11,6 @@ export default function ImprovingPlayers() {
         let myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
         let requestOptions = {
-            credentials: 'include',
             method: 'GET',
             headers: myHeaders,
             redirect: 'follow'
@@ -25,7 +24,6 @@ export default function ImprovingPlayers() {
         let myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
         let requestOptions = {
-            credentials: 'include',
             method: 'GET',
             headers: myHeaders,
             redirect: 'follow'
