@@ -24,7 +24,9 @@ export default function PlayerList() {
                 <div className="playerSearch">
                     <PlayerSearch setComponentsLoading={setComponentsLoading} componentsLoading={componentsLoading} />
                 </div>
-                <FeaturedPlayers setComponentsLoading={setComponentsLoading} componentsLoading={componentsLoading} />
+                <div className="featuredPlayers">
+                    <FeaturedPlayers setComponentsLoading={setComponentsLoading} componentsLoading={componentsLoading} />
+                </div>
                 <div className="mvpCandidates">
                     <MVPCandidates setComponentsLoading={setComponentsLoading} componentsLoading={componentsLoading} />
                 </div>

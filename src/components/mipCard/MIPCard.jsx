@@ -128,7 +128,7 @@ export default function MIPCard() {
             <div className="MIPChart">
                 <h3>{name} vs. 75th Percentile</h3>
                 <ResponsiveContainer width="100%" aspect={4 / 1}>
-                    <BarChart data={chartData} margin={{ left: -35 }}>
+                    <BarChart data={chartData} margin={{ left: -25 }}>
                         <XAxis dataKey="name" />
                         <YAxis domain={[0, 20]} />
                         <CartesianGrid strokeDasharray="3 3" />

@@ -67,7 +67,7 @@ export default function NavCards() {
                         Teams Links
                     </div>
                 </Link>
-                {gameLinks &&
+                {teamLinks &&
                     <ul className="linksList">
                         <li className="linksListItem">
                             <PeopleOutlined className="sidebarIcon" />
@@ -112,7 +112,7 @@ export default function NavCards() {
                         </li>
                     </ul>
                 }
-                <div className="arrowContainer">
+                <div className="arrowContainer" onClick={() => { setGameLinks(!gameLinks) }}>
                     {gameLinks ? <KeyBoardArrowUp /> : <KeyBoardArrowDown />}
                 </div>
             </div>

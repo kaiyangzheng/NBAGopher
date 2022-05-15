@@ -1,20 +1,18 @@
 import React, { useState, useEffect } from 'react'
-import './SMOYCard.css'
 import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import './ROYCard.css'
 
-export default function SMOYCard() {
-    const [SMOYPrediction, setSMOYPrediction] = useState([])
-    const [SMOYPredictionData, setSMOYPredictionData] = useState({})
-    const [SMOYStats, setSMOYStats] = useState({})
-    const [SMOYStatsDiff, setSMOYStatsDiff] = useState({})
+export default function ROYCard() {
+    const [ROYPrediction, setROYPrediction] = useState([])
+    const [ROYPredictionData, setROYPredictionData] = useState({})
+    const [ROYStats, setROYStats] = useState({})
     const [averageTop30PPGData, setAverageTop30PPGData] = useState({})
     const [chartData, setChartData] = useState([])
     const [name, setName] = useState('')
     let stats = ['ppg', 'apg', 'rpg', 'TS_pctg', 'BPM'];
     let statNames = ['PPG', 'APG', 'RPG', 'TS%', 'BPM'];
 
-
-    const getSMOYPrediction = async () => {
+    const getROYPrediction = async () => {
         let myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
         let requestOptions = {
@@ -22,12 +20,12 @@ export default function SMOYCard() {
             headers: myHeaders,
             redirect: 'follow'
         }
-        const response = await fetch("https://nbagopher-api.herokuapp.com/player/predicted_6moy", requestOptions)
-        const SMOYPrediction = await response.json()
-        setSMOYPrediction(SMOYPrediction?.id)
+        const response = await fetch("https://nbagopher-api.herokuapp.com/player/predicted_roy", requestOptions)
+        const ROYPrediction = await response.json()
+        setROYPrediction(ROYPrediction.id);
     }
 
-    const getSMOYPredictionData = async (playerId) => {
+    const getROYPredictionData = async (playerId) => {
         let myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
         let requestOptions = {
@@ -37,7 +35,7 @@ export default function SMOYCard() {
         }
         const response = await fetch(`https://nbagopher-api.herokuapp.com/player/compiled/${playerId}`, requestOptions)
         const playerData = await response.json()
-        setSMOYPredictionData(playerData);
+        setROYPredictionData(playerData);
     }
 
     const getAverageTop30PPGData = async () => {
@@ -54,34 +52,31 @@ export default function SMOYCard() {
     }
 
     useEffect(() => {
-        getSMOYPrediction();
+        getROYPrediction()
+    }, [])
+
+    useEffect(() => {
+        getAverageTop30PPGData()
     }, [])
 
 
     useEffect(() => {
-        getAverageTop30PPGData();
-    }, [])
+        getROYPredictionData(ROYPrediction)
+    }, [ROYPrediction])
 
     useEffect(() => {
-        getSMOYPredictionData(SMOYPrediction);
-    }, [SMOYPrediction])
-
-    useEffect(() => {
-        let statsDiff = [];
         let statsList = [];
-        let playerBasicLatest = SMOYPredictionData?.player_basic_latest;
-        let playerAdvancedLatest = SMOYPredictionData?.player_advanced_latest;
+        let playerBasicLatest = ROYPredictionData?.player_basic_latest;
+        let playerAdvancedLatest = ROYPredictionData?.player_advanced_latest;
         for (let i = 0; i < stats.length; i++) {
             if (i < 3) {
-                statsList.push(parseFloat(playerBasicLatest?.[stats[i]]))
+                statsList.push(playerBasicLatest?.[stats[i]])
             } else {
-                statsList.push(parseFloat(playerAdvancedLatest?.[stats[i]]))
+                statsList.push(playerAdvancedLatest?.[stats[i]])
             }
-
         }
-        setSMOYStats(statsList);
-        setSMOYStatsDiff(statsDiff);
-    }, [SMOYPredictionData])
+        setROYStats(statsList)
+    }, [ROYPredictionData])
 
     useEffect(() => {
         let stats = ['ppg', 'apg', 'rpg', 'spg', 'bpg', 'TS_pctg', 'AST_pctg', 'TRB_pctg', 'STL_pctg', 'BLK_pctg', 'BPM']
@@ -92,50 +87,51 @@ export default function SMOYCard() {
                 dataList.push({
                     name: statNames[i],
                     average: averageTop30PPGData?.['average_basic_stats']?.[stats[i]],
-                    SMOY: SMOYPredictionData?.['player_basic_latest']?.[stats[i]]
+                    roy: ROYPredictionData?.['player_basic_latest']?.[stats[i]]
                 })
             } else {
                 dataList.push({
                     name: statNames[i],
                     average: averageTop30PPGData?.['average_advanced_stats']?.[stats[i]],
-                    SMOY: SMOYPredictionData?.['player_advanced_latest']?.[stats[i]]
+                    roy: ROYPredictionData?.['player_advanced_latest']?.[stats[i]]
                 })
             }
         }
         setChartData([...dataList])
-        setName(SMOYPredictionData?.['player_info']?.['first_name'] + ' ' + SMOYPredictionData?.['player_info']?.['last_name'])
-    }, [SMOYPredictionData])
+        setName(ROYPredictionData?.['player_info']?.['first_name'] + ' ' + ROYPredictionData?.['player_info']?.['last_name'])
+    }, [ROYPredictionData])
+
 
     return (
-        <div className="SMOYCard">
-            <div className="SMOYItem">
-                <h3>6MOY Prediction</h3>
-                <div className="SMOYTitleContainer">
-                    <img src={`https://cdn.nba.com/headshots/nba/latest/1040x760/${SMOYPrediction}.png`} alt="" className="SMOYTitleImg" />
-                    <span className="SMOYTitleText">{SMOYPredictionData?.['player_info']?.['first_name']} {SMOYPredictionData?.['player_info']?.['last_name']}</span>
+        <div className="ROYCard">
+            <div className="ROYItem">
+                <h3>ROY Prediction</h3>
+                <div className="ROYTitleContainer">
+                    <img src={`https://cdn.nba.com/headshots/nba/latest/1040x760/${ROYPrediction}.png`} alt="" className="ROYTitleImg" />
+                    <span className="ROYTitleText">{name}</span>
                 </div>
-                <div className="SMOYStatsContainer">
+                <div className="ROYStatsContainer">
                     {stats.map((stat, index) => {
-                        let statDiff = Math.round(SMOYStatsDiff[index] * 100) / 100;
-                        return <div className="SMOYStat">{SMOYStats[index]}  <span className="SMOYStatName">{statNames[index]}</span></div>
+                        return <div className="ROYStat" key={index}>
+                            {ROYStats[index]} <span className="ROYStatName">{statNames[index]}</span>
+                        </div>
                     })}
                 </div>
-            </div >
-            <div className="SMOYChart">
+            </div>
+            <div className="ROYChart">
                 <h3>{name} vs. 75th Percentile</h3>
                 <ResponsiveContainer width="100%" aspect={4 / 1}>
                     <BarChart data={chartData} margin={{ left: -25 }}>
                         <XAxis dataKey="name" />
-                        <YAxis domain={[0, 20]} />
+                        <YAxis type="number" domain={[0, 20]} />
                         <CartesianGrid strokeDasharray="3 3" />
                         <Tooltip />
                         <Legend />
-                        <Bar dataKey="SMOY" fill="#8884d8" name={name} />
+                        <Bar dataKey="roy" fill="#8884d8" name={name} />
                         <Bar dataKey="average" fill="#82ca9d" name="75th Percentile" />
                     </BarChart>
                 </ResponsiveContainer>
             </div>
-
-        </div >
+        </div>
     )
 }

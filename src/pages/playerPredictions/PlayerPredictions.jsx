@@ -6,6 +6,7 @@ import MVPCard from '../../components/mvpCard/MVPCard'
 import DPOYCard from '../../components/dpoyCard/DPOYCard'
 import MIPCard from '../../components/mipCard/MIPCard'
 import SMOYCard from '../../components/smoyCard/SMOYCard'
+import ROYCard from '../../components/royCard/ROYCard'
 
 export default function PlayerPredictions() {
     return (
@@ -24,6 +25,9 @@ export default function PlayerPredictions() {
             </div>
             <div className="smoy">
                 <SMOYCard />
+            </div>
+            <div className="roy">
+                <ROYCard />
             </div>
         </div>
     )
