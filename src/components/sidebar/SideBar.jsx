@@ -57,7 +57,7 @@ export default function SideBar() {
                             </li>
                         </Link>
                         <Link to="/playerpredictions" style={{ textDecoration: 'none' }}>
-                            <li className="sidebarListItem">
+                            <li className={active == "/playerpredictions" ? "sidebarListItem active" : "sidebarListItem"}>
                                 <RemoveRedEyeOutlined className="sidebarIcon" />
                                 Predictions
                             </li>

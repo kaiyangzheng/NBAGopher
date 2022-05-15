@@ -5,6 +5,7 @@ import FutureStatsSearch from '../../components/futureStatsSearch/FutureStatsSea
 import MVPCard from '../../components/mvpCard/MVPCard'
 import DPOYCard from '../../components/dpoyCard/DPOYCard'
 import MIPCard from '../../components/mipCard/MIPCard'
+import SMOYCard from '../../components/smoyCard/SMOYCard'
 
 export default function PlayerPredictions() {
     return (
@@ -20,6 +21,9 @@ export default function PlayerPredictions() {
             </div>
             <div className="mip">
                 <MIPCard />
+            </div>
+            <div className="smoy">
+                <SMOYCard />
             </div>
         </div>
     )
