@@ -1,4 +1,4 @@
-.improvingPlayers {
+.decliningPlayers {
     flex: 1;
     -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
     box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
@@ -6,32 +6,32 @@
     margin: 20px;
 }
 
-.improvingPlayersTitle {
+.decliningPlayersTitle {
     font-size: 22px;
     font-weight: 600;
 }
 
-.improvingPlayersTable {
+.decliningPlayersTable {
     width: 100%;
     border-spacing: 20px;
 }
 
-.improvingPlayersTh {
+.decliningPlayersTh {
     text-align: left;
 }
 
-.improvingPlayerName {
+.decliningPlayerName {
     font-weight: normal;
     text-align: left;
 }
 
-.improvingPlayer {
+.decliningPlayer {
     display: flex;
     align-items: center;
     font-weight: 600;
 }
 
-.improvingPlayerImg {
+.decliningPlayerImg {
     height: 40px;
     width: 40px;
     border-radius: 50%;

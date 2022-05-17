@@ -4,51 +4,10 @@ import KeyBoardArrowDown from '@material-ui/icons/KeyboardArrowDown'
 import KeyBoardArrowUp from '@material-ui/icons/KeyboardArrowUp'
 import './featuredtrendingplayers.css'
 
-export default function FeaturedTrendingPlayers() {
+export default function FeaturedTrendingPlayers({ trendingPlayers, featuredTrendingData, showTrendChart, setShowTrendChart }) {
     const row1 = ['featured_offense_improve_id', 'featured_offense_decline_id'];
     const row2 = ['featured_defense_improve_id', 'featured_defense_decline_id'];
-    const [trendingPlayers, setTrendingPlayers] = useState([])
-    const [featuredTrendingData, setFeaturedTrendingData] = useState({});
-    const [showTrendChart, setShowTrendChart] = useState({});
 
-
-    const getTrendingFeaturedPlayers = async () => {
-        let myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
-        let requestOptions = {
-            method: 'GET',
-            headers: myHeaders,
-            redirect: 'follow'
-        }
-        const response = await fetch("https://nbagopher-api.herokuapp.com/player/featured_trending_players", requestOptions)
-        const trendingPlayers = await response.json()
-        setTrendingPlayers(trendingPlayers);
-    }
-
-    const getTrendingFeaturedPlayersData = async (playerId) => {
-        let myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
-        let requestOptions = {
-            method: 'GET',
-            headers: myHeaders,
-            redirect: 'follow'
-        }
-        const response = await fetch(`https://nbagopher-api.herokuapp.com/player/compiled/${playerId}`, requestOptions)
-        const playerData = await response.json()
-        setFeaturedTrendingData(featuredTrendingData => ({ ...featuredTrendingData, [playerId]: playerData }))
-    }
-
-    useEffect(() => {
-        getTrendingFeaturedPlayers();
-    }, [])
-
-
-    useEffect(() => {
-        for (const [key, value] of Object.entries(trendingPlayers)) {
-            setShowTrendChart(showTrendChart => ({ ...showTrendChart, [value]: false }))
-            getTrendingFeaturedPlayersData(value);
-        }
-    }, [trendingPlayers])
     return <>
         <div className="featuredTrending">
             {row1.map((row, index) => {

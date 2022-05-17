@@ -3,11 +3,7 @@ import { DataGrid } from '@material-ui/data-grid'
 import { FontAwesomeIcon } from '@fortawesome/fontawesome-free'
 import './mvpcandidates.css'
 
-export default function MVPCandidates({ setComponentsLoading, componentsLoading }) {
-    const [mvpCandidates, setMvpCandidates] = useState([])
-    const [mvpCandidatesData, setMvpCandidatesData] = useState({})
-    const [retrieveData, setRetrieveData] = useState(true)
-    const [tableData, setTableData] = useState([])
+export default function MVPCandidates({ setComponentsLoading, componentsLoading, mvpCandidates, mvpCandidatesData, retrieveData, tableData, setRetrieveData, setTableData }) {
     const [sortDirection, setSortDirection] = useState({})
 
     const columns = [
@@ -20,70 +16,6 @@ export default function MVPCandidates({ setComponentsLoading, componentsLoading 
         { field: "TS%", headerName: "TS%", width: 150 },
         { field: "BPM", headerName: "BPM", width: 150 },
     ]
-
-    const getMVPCandidates = async () => {
-        let myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
-        let requestOptions = {
-            method: 'GET',
-            headers: myHeaders,
-            redirect: 'follow'
-        }
-        const response = await fetch("https://nbagopher-api.herokuapp.com/mvp_candidates", requestOptions)
-        const mvpPlayers = await response.json()
-        setMvpCandidates(mvpPlayers);
-    }
-
-    const getPlayerData = async (playerId) => {
-        let myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
-        let requestOptions = {
-            method: 'GET',
-            headers: myHeaders,
-            redirect: 'follow'
-        }
-        const response = await fetch(`https://nbagopher-api.herokuapp.com/player/compiled/${playerId}`, requestOptions)
-        const playerData = await response.json()
-        setMvpCandidatesData(mvpCandidatesData => ({ ...mvpCandidatesData, [playerId]: playerData }))
-    }
-    useEffect(() => {
-        getMVPCandidates()
-    }, [])
-
-    useEffect(() => {
-        for (let i = 0; i < mvpCandidates.length; i++) {
-            let playerId = mvpCandidates[i]
-            getPlayerData(playerId);
-        }
-        setRetrieveData(false);
-    }, [mvpCandidates])
-
-    useEffect(() => {
-        let dataList = []
-        for (let i = 0; i < mvpCandidates.length; i++) {
-            let playerId = mvpCandidates[i]
-            let playerData = mvpCandidatesData[playerId]
-            if (playerData) {
-                let data = {
-                    id: playerId,
-                    "Name": playerData['player_info']?.first_name + " " + playerData['player_info']?.last_name,
-                    "Position": playerData['player_info']?.pos_full,
-                    "PPG": parseFloat(playerData['player_basic_latest']?.ppg),
-                    "APG": parseFloat(playerData['player_basic_latest']?.apg),
-                    "RPG": parseFloat(playerData['player_basic_latest']?.rpg),
-                    "TS%": parseFloat(playerData['player_advanced_latest']?.TS_pctg),
-                    "BPM": parseFloat(playerData['player_advanced_latest']?.BPM),
-                }
-                dataList.push(data)
-            }
-
-        }
-        dataList.sort(function (first, second) {
-            return second['BPM'] - first['BPM'];
-        })
-        setTableData(dataList.splice(0, 3))
-        setComponentsLoading({ ...componentsLoading, "MVPCandidates": false })
-    }, [mvpCandidatesData])
 
     const handleSort = (property) => {
         if (sortDirection[property] == undefined || sortDirection[property] == "asc") {
