@@ -417,7 +417,7 @@ export default function PlayerPredictions() {
         let playerBasicLatest = ROYPredictionData?.player_basic_latest;
         let playerAdvancedLatest = ROYPredictionData?.player_advanced_latest;
         for (let i = 0; i < stats.length; i++) {
-            if (i < 3) {
+            if (i < 5) {
                 statsList.push(playerBasicLatest?.[stats[i]])
             } else {
                 statsList.push(playerAdvancedLatest?.[stats[i]])

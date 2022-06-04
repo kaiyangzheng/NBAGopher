@@ -53,10 +53,6 @@ export default function NavCards() {
                         </Link>
                     </ul>
                 }
-                <div className="arrowContainer" onClick={() => { setPlayerLinks(!playerLinks) }}>
-                    {playerLinks ? <KeyBoardArrowUp /> : <KeyBoardArrowDown />}
-                </div>
-
             </div>
             <div className="navCardItem">
                 <div className="navCardImg">
@@ -69,10 +65,12 @@ export default function NavCards() {
                 </Link>
                 {teamLinks &&
                     <ul className="linksList">
-                        <li className="linksListItem">
-                            <PeopleOutlined className="sidebarIcon" />
-                            Teams
-                        </li>
+                        <Link to="/teams" style={{ textDecoration: "none" }}>
+                            <li className="linksListItem">
+                                <PeopleOutlined className="sidebarIcon" />
+                                Teams
+                            </li>
+                        </Link>
                         <li className="linksListItem">
                             <AssessmentOutlined className="sidebarIcon" />
                             Analytics
@@ -83,9 +81,6 @@ export default function NavCards() {
                         </li>
                     </ul>
                 }
-                <div className="arrowContainer" onClick={() => { setTeamLinks(!teamLinks) }}>
-                    {teamLinks ? <KeyBoardArrowUp /> : <KeyBoardArrowDown />}
-                </div>
             </div>
             <div className="navCardItem">
                 <div className="navCardImg">
@@ -112,9 +107,6 @@ export default function NavCards() {
                         </li>
                     </ul>
                 }
-                <div className="arrowContainer" onClick={() => { setGameLinks(!gameLinks) }}>
-                    {gameLinks ? <KeyBoardArrowUp /> : <KeyBoardArrowDown />}
-                </div>
             </div>
 
         </div >

@@ -1,0 +1,53 @@
+.teamStandings{
+    -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+    margin: 0 20px;
+}
+
+.teamStandingsTitle{
+    font-size: 22px;
+    font-weight: 600;
+    padding-top: 20px;
+    padding-left: 20px;
+}
+
+.teamStandingsTable{
+    width: 100%;
+    border-spacing: 40px;
+}
+
+.teamstandingsTh{
+    text-align: left;
+    cursor: pointer;
+}
+
+.teamstandingsTd{
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+}
+
+.teamStandingsTr{
+    text-align: left;
+    cursor: pointer;
+}
+
+.teamStandingsTdName{
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+}
+
+.teamImg{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+    border: 1px rgba(0, 0, 0, 0.75) solid;
+}
+
+.teamContainer{
+    display: flex;
+    align-items: center;
+}

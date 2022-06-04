@@ -67,10 +67,12 @@ export default function SideBar() {
                 <div className="sidebarMenu">
                     <h3 className="sidebarTitle">Teams</h3>
                     <ul className="sidebarList">
-                        <li className="sidebarListItem">
-                            <PeopleOutlined className="sidebarIcon" />
-                            Teams
-                        </li>
+                        <Link to="/teams" style={{ textDecoration: 'none' }}>
+                            <li className={active == "/teams" ? "sidebarListItem active" : "sidebarListItem"}>
+                                <PeopleOutlined className="sidebarIcon" />
+                                Teams
+                            </li>
+                        </Link>
                         <li className="sidebarListItem">
                             <AssessmentOutlined className="sidebarIcon" />
                             Analytics
