@@ -3,6 +3,7 @@ import './teamlist.css'
 
 import FeaturedTeams from '../../components/featuredTeams/FeaturedTeams'
 import TeamStandings from '../../components/teamStandings/TeamStandings';
+import TeamPlayoffsBracket from '../../components/teamPlayoffsBracket/TeamPlayoffsBracket';
 
 export default function TeamList() {
     const [featuredTeams, setFeaturedTeams] = useState({});
@@ -104,6 +105,9 @@ export default function TeamList() {
             </div>
             <div className="standings">
                 <TeamStandings westStandings={westStandings} eastStandings={eastStandings} />
+            </div>
+            <div className="playoffsBracket">
+                <TeamPlayoffsBracket />
             </div>
         </div>
     )
