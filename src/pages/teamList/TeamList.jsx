@@ -3,8 +3,22 @@ import './teamlist.css'
 
 import FeaturedTeams from '../../components/featuredTeams/FeaturedTeams'
 import TeamStandings from '../../components/teamStandings/TeamStandings';
+import TeamPlayoffsBracket from '../../components/teamPlayoffsBracket/TeamPlayoffsBracket';
+
+import {
+    ScaleLoader
+} from "react-spinners";
 
 export default function TeamList() {
+    const [loadingItems, setLoadingItems] = useState({'featuredTeams': true, 'teamStandings': true, 'teamPlayoffsBracket': true});
+    const [loading, setLoading] = useState(true);
+
+    useEffect(()=>{
+        if (!loadingItems.featuredTeams && !loadingItems.teamStandings && !loadingItems.teamPlayoffsBracket) {
+            setLoading(false);
+        }
+    }, [loadingItems])
+
     const [featuredTeams, setFeaturedTeams] = useState({});
     const [featuredTeamsData, setFeaturedTeamsData] = useState({});
 
@@ -52,9 +66,11 @@ export default function TeamList() {
 
     useEffect(() => {
         getFeaturedTeamsData();
+        setLoadingItems({...loadingItems, 'featuredTeams': false})
     }, [featuredTeams])
 
     const [standings, setStandings] = useState([]);
+    const [objStandings, setObjStandings] = useState({});
     const [westStandings, setWestStandings] = useState([]);
     const [eastStandings, setEastStandings] = useState([]);
 
@@ -68,6 +84,7 @@ export default function TeamList() {
         }
         const response = await fetch("https://nbagopher-api.herokuapp.com/team/standings", requestOptions)
         const standings = await response.json()
+        setObjStandings(standings)
         setStandings(Object.entries(standings))
     }
 
@@ -94,17 +111,61 @@ export default function TeamList() {
 
         setWestStandings(westStandings)
         setEastStandings(eastStandings)
+        setLoadingItems({...loadingItems, 'teamStandings': false})
     }, [standings])
 
+    const [playoffsData, setPlayoffsData] = useState({});
+    const [teamInfo, setTeamInfo] = useState({});
 
+    const getPlayoffsData = async() =>{
+        let headers = new Headers();
+        headers.append("Content-Type", "application/json");
+        let requestOptions = {
+            method: 'GET',
+            headers: headers,
+            redirect: 'follow'
+        }
+        const response = await fetch("https://nbagopher-api.herokuapp.com/team/playoffs/info", requestOptions)
+        const playoffsData = await response.json()
+        setPlayoffsData(playoffsData)
+    }
+
+    const getTeamInfo = async() =>{
+        let headers = new Headers();
+        headers.append("Content-Type", "application/json");
+        let requestOptions = {
+            method: 'GET',
+            headers: headers,
+            redirect: 'follow'
+        }
+        const response = await fetch("https://nbagopher-api.herokuapp.com/team/info", requestOptions)
+        const teamInfo = await response.json()
+        setTeamInfo(teamInfo)
+    }
+
+    useEffect(() => {
+        getPlayoffsData();
+        setLoadingItems({...loadingItems, 'teamPlayoffsBracket': false})
+    }, [])
+
+    useEffect(()=>{
+        getTeamInfo();
+    }, [])
+    
     return (
         <div className="teamlist">
-            <div className="featuredTeams">
-                <FeaturedTeams featuredTeams={featuredTeams} featuredTeamsData={featuredTeamsData} />
-            </div>
-            <div className="standings">
-                <TeamStandings westStandings={westStandings} eastStandings={eastStandings} />
-            </div>
+            {loading && <div className="loading-container" style={{ position: "absolute", top: '50%', left: '50%' }}>< ScaleLoader /> </div>}
+            {!loading && <div>
+                <div className="featuredTeams">
+                    <FeaturedTeams featuredTeams={featuredTeams} featuredTeamsData={featuredTeamsData} />
+                </div>
+                <div className="playoffsBracket">
+                    <TeamPlayoffsBracket playoffsData={playoffsData} teamInfo={teamInfo} objStandings={objStandings}/>
+                </div>
+                <div className="standings">
+                    <TeamStandings westStandings={westStandings} eastStandings={eastStandings} />
+                </div>
+            </div>}
         </div>
     )
 }

@@ -26,9 +26,9 @@ export default function FeaturedTeams({ featuredTeams, featuredTeamsData }) {
                     <span className="featuredTitleText">{featuredDefenseData?.info?.name}</span>
                 </div>
                 <div className="featuredStatsContainer">
-                    <span className="featuredStat">{featuredDefenseData?.basic?.oopg} <span className="featuredStatName">Opp. PPG</span></span>
+                    <span className="featuredStat">{featuredDefenseData?.basic?.oopg} <span className="featuredStatName">OPPG</span></span>
                     <span className="featuredStat">{featuredDefenseData?.advanced?.DRTG} <span className="featuredStatName">DRTG</span></span>
-                    <span className="featuredStat">{featuredDefenseData?.standings?.wins}-{featuredDefenseData?.standings?.losses} <span className="featuredRecord"></span><span className="featuredStatName">Record</span></span>
+                    <span className="featuredStat">{featuredDefenseData?.standings?.wins}-{featuredOffenseData?.standings?.losses} <span className="featuredStatName">Record</span></span>
                 </div>
                 <span className="featuredSub">Featured Defense</span>
             </div>
