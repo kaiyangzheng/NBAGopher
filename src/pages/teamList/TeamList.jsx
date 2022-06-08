@@ -4,10 +4,13 @@ import './teamlist.css'
 import FeaturedTeams from '../../components/featuredTeams/FeaturedTeams'
 import TeamStandings from '../../components/teamStandings/TeamStandings';
 import TeamPlayoffsBracket from '../../components/teamPlayoffsBracket/TeamPlayoffsBracket';
+<<<<<<< HEAD
 
 import {
     ScaleLoader
 } from "react-spinners";
+=======
+>>>>>>> 73d2d6fa8376ef8b0db9ca68c688a3e81e999aa6
 
 export default function TeamList() {
     const [loadingItems, setLoadingItems] = useState({'featuredTeams': true, 'teamStandings': true, 'teamPlayoffsBracket': true});
@@ -154,6 +157,7 @@ export default function TeamList() {
     
     return (
         <div className="teamlist">
+<<<<<<< HEAD
             {loading && <div className="loading-container" style={{ position: "absolute", top: '50%', left: '50%' }}>< ScaleLoader /> </div>}
             {!loading && <div>
                 <div className="featuredTeams">
@@ -166,6 +170,17 @@ export default function TeamList() {
                     <TeamStandings westStandings={westStandings} eastStandings={eastStandings} />
                 </div>
             </div>}
+=======
+            <div className="featuredTeams">
+                <FeaturedTeams featuredTeams={featuredTeams} featuredTeamsData={featuredTeamsData} />
+            </div>
+            <div className="standings">
+                <TeamStandings westStandings={westStandings} eastStandings={eastStandings} />
+            </div>
+            <div className="playoffsBracket">
+                <TeamPlayoffsBracket />
+            </div>
+>>>>>>> 73d2d6fa8376ef8b0db9ca68c688a3e81e999aa6
         </div>
     )
 }

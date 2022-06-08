@@ -4,6 +4,7 @@
     margin: 0 20px;
 }
 
+<<<<<<< HEAD
 .teamPlayoffsTitle{
     font-size: 22px;
     font-weight: 600;
@@ -18,6 +19,11 @@ main{
   display:flex;
   flex-direction:row;
   justify-content: center;
+=======
+main{
+  display:flex;
+  flex-direction:row;
+>>>>>>> 73d2d6fa8376ef8b0db9ca68c688a3e81e999aa6
 }
 .round{
   display:flex;
@@ -64,6 +70,7 @@ li.game{
     min-height:40px;
   }
 
+<<<<<<< HEAD
   li.game-spacer-half{
     border-right:1px solid #aaa;
     min-height:100px;
@@ -109,3 +116,8 @@ li.game{
     align-items: center;
     justify-content: space-between;
   }
+=======
+  li.game-bottom{ 
+    border-top:1px solid #aaa;
+  }
+>>>>>>> 73d2d6fa8376ef8b0db9ca68c688a3e81e999aa6
